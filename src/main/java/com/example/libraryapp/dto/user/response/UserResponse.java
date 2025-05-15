@@ -13,6 +13,12 @@ public class UserResponse {
         this.name = user.getName();
     }
 
+    public UserResponse(long id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
     public Integer getAge() {
         return age;
     }
