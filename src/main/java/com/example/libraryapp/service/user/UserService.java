@@ -1,16 +1,11 @@
 package com.example.libraryapp.service.user;
 
-import com.example.libraryapp.domain.user.User;
 import com.example.libraryapp.dto.user.request.UserCreateRequest;
 import com.example.libraryapp.dto.user.request.UserUpdateRequest;
 import com.example.libraryapp.dto.user.response.UserResponse;
 import com.example.libraryapp.repository.user.UserRepository;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 import java.util.List;
 

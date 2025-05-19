@@ -1,8 +1,9 @@
 package com.example.libraryapp.repository.book;
 
-public class BookMemoryRepository implements BookRepository {
+public class BookMySqlRepository implements BookRepository {
     @Override
     public void saveBook() {
 
     }
 }
+
