@@ -5,7 +5,10 @@ import com.example.libraryapp.dto.user.request.UserCreateRequest;
 import com.example.libraryapp.dto.user.request.UserUpdateRequest;
 import com.example.libraryapp.dto.user.response.UserResponse;
 import com.example.libraryapp.repository.user.UserRepository;
+import com.example.libraryapp.service.fruit.FruitService;
 import com.example.libraryapp.service.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +18,16 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final FruitService fruitService;
 
-    public UserController(UserService userService) {
+//    @Autowired
+//    public void setUserService(UserService userService) {
+//        this.userService = userService;
+//    }
+
+    public UserController(UserService userService, @Qualifier("m") FruitService fruitService) {
         this.userService = userService;
+        this.fruitService = fruitService;
     }
 
     @PostMapping("/user")//post/user
