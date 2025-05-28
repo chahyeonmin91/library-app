@@ -6,6 +6,7 @@ import com.example.libraryapp.dto.user.request.UserUpdateRequest;
 import com.example.libraryapp.dto.user.response.UserResponse;
 import com.example.libraryapp.service.fruit.FruitService;
 import com.example.libraryapp.service.user.UserServiceV1;
+import com.example.libraryapp.service.user.UserServiceV2;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,14 +14,9 @@ import java.util.List;
 
 @RestController
 public class UserController {
-    private final UserServiceV1 userService;
+    private final UserServiceV2 userService;
 
-//    @Autowired
-//    public void setUserService(UserService userService) {
-//        this.userService = userService;
-//    }
-
-    public UserController(UserServiceV1 userService, @Qualifier("m") FruitService fruitService) {
+    public UserController(UserServiceV2 userService) {
         this.userService = userService;
     }
 

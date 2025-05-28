@@ -3,7 +3,12 @@ package com.example.libraryapp.service.user;
 import com.example.libraryapp.domain.user.User;
 import com.example.libraryapp.domain.user.UserRepository;
 import com.example.libraryapp.dto.user.request.UserCreateRequest;
+import com.example.libraryapp.dto.user.request.UserUpdateRequest;
+import com.example.libraryapp.dto.user.response.UserResponse;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceV2 {
@@ -15,7 +20,32 @@ public class UserServiceV2 {
 
     public void saveUser(UserCreateRequest request) {
         User u = userRepository.save(new User(request.getName(), request.getAge()));
-        u.getId();
+    }
+
+    public List<UserResponse> getUsers() {
+        //유저 레포지토리에서 유저 정보들을 가져온 다음 자바의 stream으로 바꿈
+        return userRepository.findAll().stream()
+                //유저를 유저 response로 변환시키고 다시 리스트로 만들어서 반환
+                .map(UserResponse::new)
+                .collect(Collectors.toList());
+    }
+
+    public void updateUser(UserUpdateRequest request) {
+        //Optional<User>
+        User user = userRepository.findById(request.getId())
+                .orElseThrow(IllegalArgumentException::new);
+
+        //객체를 업데이트 해주고, save메소드를 호출
+        //그러면 자동으로 UPDATE SQL이 날아감
+        user.updateName(request.getName());
+        userRepository.save(user);
+    }
+
+    public void deleteUser(String name) {
+        User user = userRepository.findByName(name).orElseThrow(IllegalArgumentException::new);
+        //delete sql은 있음
+        userRepository.delete(user);
 
     }
+
 }
