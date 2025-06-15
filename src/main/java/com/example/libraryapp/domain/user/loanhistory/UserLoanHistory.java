@@ -15,4 +15,14 @@ public class UserLoanHistory {
     private long userId;
     private String bookName;
     private boolean isReturn;
+
+    protected UserLoanHistory() {
+
+    }
+
+    public UserLoanHistory(long userId, String bookName) {
+        this.bookName = bookName;
+        this.isReturn = false;
+        this.userId = userId;
+    }
 }
