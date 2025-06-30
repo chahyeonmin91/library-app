@@ -35,8 +35,11 @@ public class User {
     public Long getId() {
         return id;
     }
+<<<<<<< Updated upstream
 
     public void updateName(String name) {
         this.name = name;
     }
+=======
+>>>>>>> Stashed changes
 }
